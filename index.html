@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHATSAPP X FREE FIRE - Video Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        .top-header {
+            background-color: #000000;
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1a1515;
+            font-size: 13px;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #ff002b; /* Gaming Red */
+        }
+
+        .portal-txt {
+            color: #555;
+            margin-left: 10px;
+            font-size: 11px;
+        }
+
+        .online-count {
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #ff002b;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ff002b;
+        }
+
+        /* Ticker / Navigation Bar - Now White Background with Black Text */
+        .nav-ticker {
+            background-color: #ffffff;
+            color: #000000;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 10px 0;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            display: flex;
+            border-bottom: 2px solid #ff002b;
+        }
+
+        .ticker-wrap {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            padding: 0 25px;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Left Side: Video Section */
+        .video-section {
+            background-color: #000000;
+            border: 2px solid #ff002b; /* Red Border */
+            border-radius: 4px;
+            padding: 15px;
+            position: relative;
+            box-shadow: 0 0 15px rgba(255, 0, 43, 0.1);
+        }
+
+        .video-header {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        /* Real Video Container */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            background-color: #000;
+            border-radius: 2px;
+            border: 1px solid #1a1515;
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Right Side: Claim Panel */
+        .claim-card {
+            background-color: #0b0b0c;
+            border-radius: 6px;
+            padding: 25px;
+            border: 1px solid #1a1a1c;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .app-info-block {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        /* Image Box - Red/Black Theme */
+        .app-icon {
+            width: 115px;
+            height: 115px;
+            background: linear-gradient(135deg, #4a000b, #000000);
+            border-radius: 22px;
+            border: 2px solid #ff002b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 0, 43, 0.2);
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .app-details h2 {
+            font-size: 26px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .app-meta-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        .tag-verified { background-color: rgba(255, 0, 43, 0.15); color: #ff002b; border: 1px solid rgba(255, 0, 43, 0.3); }
+        .tag-trusted { background-color: rgba(255, 255, 255, 0.1); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
+
+        .sub-text {
+            color: #888;
+            font-size: 11px;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background-color: #000000;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #1a1a1c;
+            margin-bottom: 25px;
+        }
+
+        .stat-box {
+            text-align: left;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: #555;
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+        .stat-value {
+            font-size: 15px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .stat-value.red { color: #ff002b; }
+
+        /* Install Button styling - Vivid Red */
+        .btn-install {
+            background: linear-gradient(90deg, #cc0022, #ff002b);
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(255, 0, 43, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            margin-bottom: 25px;
+        }
+
+        .btn-install:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 0, 43, 0.6);
+        }
+
+        /* Live Activity Bar */
+        .live-bar {
+            background-color: #000000;
+            border-top: 1px solid #1a1a1c;
+            border-bottom: 1px solid #1a1a1c;
+            padding: 10px 15px;
+            font-size: 11px;
+            color: #666;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+        }
+
+        .live-bar span {
+            color: #ff002b; /* Red highlighted count */
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .badge-box {
+            background-color: #000000;
+            border: 1px solid #1a1a1c;
+            padding: 15px 10px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .badge-icon {
+            font-size: 14px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .badge-box:nth-child(1) .badge-icon { color: #ff002b; }
+        .badge-box:nth-child(2) .badge-icon { color: #ff002b; }
+        .badge-box:nth-child(3) .badge-icon { color: #ff002b; }
+
+        .badge-title {
+            font-size: 10px;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 2px;
+            color: #ffffff;
+        }
+
+        .badge-desc {
+            font-size: 9px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #000;
+            text-align: center;
+            padding: 30px;
+            font-size: 10px;
+            color: #444;
+            font-weight: bold;
+            border-top: 1px solid #111;
+            letter-spacing: 0.5px;
+            margin-top: 60px;
+        }
+
+        .footer span {
+            color: #ffffff;
+        }
+
+        /* मोबाइल रिस्पॉन्सिव सेटिंग्स - बटन को बिना स्क्रॉल किए ऊपर दिखाने के लिए */
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 10px auto;
+                padding: 0 10px;
+                gap: 12px;
+            }
+
+            .video-section {
+                padding: 10px;
+            }
+
+            .video-wrapper {
+                max-height: 220px; /* वीडियो की हाइट थोड़ी कम की ताकि लेआउट कंप्रेस रहे */
+            }
+
+            .claim-card {
+                padding: 15px;
+            }
+
+            .app-info-block {
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+
+            .app-icon {
+                width: 75px;
+                height: 75px;
+                border-radius: 12px;
+            }
+
+            .app-details h2 {
+                font-size: 19px;
+            }
+
+            .stats-grid {
+                padding: 10px;
+                margin-bottom: 15px;
+                gap: 6px;
+            }
+
+            .stat-value {
+                font-size: 13px;
+            }
+
+            /* बटन का साइज और पैडिंग थोड़ी कम की ताकि मोबाइल पर बिना स्क्रॉल किए एकदम ऊपर फिट दिखे */
+            .btn-install {
+                padding: 14px;
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+            
+            .live-bar {
+                margin-bottom: 15px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">WHATSAPP <span>X FREE FIRE</span> <span class="portal-txt">| VIDEO PORTAL</span></div>
+        <div class="online-count">
+            <div class="online-dot"></div>
+            <span>1,389 ONLINE</span>
+        </div>
+    </header>
+
+    <div class="nav-ticker">
+        <div class="ticker-wrap">
+            <div class="ticker-item">OB53 UPDATE TRICK —</div>
+            <div class="ticker-item">UNLIMITED ACCESS —</div>
+            <div class="ticker-item">PREMIUM CONTENT —</div>
+            <div class="ticker-item">WATCH NOW —</div>
+            <div class="ticker-item">GARENA FREE FIRE —</div>
+            <div class="ticker-item">UNLIMITED FREE DIAMOND —</div>
+            <div class="ticker-item">OB53 UPDATE TRICK —</div>
+            <div class="ticker-item">UNLIMITED ACCESS —</div>
+            <div class="ticker-item">PREMIUM CONTENT —</div>
+            <div class="ticker-item">WATCH NOW —</div>
+            <div class="ticker-item">GARENA FREE FIRE —</div>
+            <div class="ticker-item">UNLIMITED FREE DIAMOND —</div>
+        </div>
+    </div>
+
+    <main class="main-container">
+        
+        <section class="video-section">
+            <div class="video-header">
+                <span>01</span>
+                <span>WATCH FULL VIDEO</span>
+            </div>
+            <div class="video-wrapper">
+                <video src="https://www.image2url.com/r2/default/videos/1779131327794-10ddd02b-ad86-4148-9edf-0b88b9452b49.mp4" controls autoplay muted playsinline loop></video>
+            </div>
+        </section>
+
+        <section class="claim-card">
+            <div>
+                <div class="app-info-block">
+                    <div class="app-icon">
+                        <img src="https://www.image2url.com/r2/default/images/1779258551770-bbcde0fd-e2fa-4340-bc99-6dded55f1e20.png"  alt="Free Fire Icon">
+                    </div>
+                    <div class="app-details">
+                        <div class="app-meta-tags">
+                            <span class="tag tag-verified">✓ Verified</span>
+                            <span class="tag tag-trusted">Most Trusted</span>
+                        </div>
+                        <h2>Unlimited Free Diamond</h2>
+                        <p class="sub-text">Free Fire Unlimited Diamond<br>Unlimited Access • No Ban</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">VERSION</span>
+                        <span class="stat-value">OB53</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">PRICE</span>
+                        <span class="stat-value red">FREE</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">UPTIME</span>
+                        <span class="stat-value">24/7</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">DISTRIBUTED</span>
+                        <span class="stat-value">102.7K+</span>
+                    </div>
+                </div>
+
+                <a href="https://freefiresecrets.boocnd.site?key=tlksff31" class="btn-install" target="_blank">
+                    💎 CLAIM NOW
+                </a>
+
+                <div class="live-bar">
+                    <span>159,977</span> DIAMONDS DISTRIBUTED IN LAST HOUR
+                </div>
+            </div>
+
+            <div class="trust-badges">
+                <div class="badge-box">
+                    <span class="badge-icon">🛡️</span>
+                    <span class="badge-title">VIRUS</span>
+                    <span class="badge-desc">FREE</span>
+                </div>
+                <div class="badge-box">
+                    <span class="badge-icon">⚡</span>
+                    <span class="badge-title">FAST</span>
+                    <span class="badge-desc">INSTALL</span>
+                </div>
+                <div class="badge-box">
+                    <span class="badge-icon">👤</span>
+                    <span class="badge-title">78K+</span>
+                    <span class="badge-desc">USERS</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        © 2026 — <span>Ahmed JI</span> — ALL RIGHTS RESERVED
+    </footer>
+
+    <script>
+        document.addEventListener('click', function() {
+            var video = document.querySelector('.video-wrapper video');
+            if (video && video.muted) {
+                video.muted = false;
+                video.play().catch(function(error) {
+                    console.log("Audio play blocked by browser: ", error);
+                });
+            }
+        }, { once: true }); // '{ once: true }' का मतलब है ये सिर्फ पहले क्लिक पर चलेगा, ताकि बाद में यूजर खुद बंद करना चाहे तो कर सके।
+    </script>
+
+</body>
+</html>
